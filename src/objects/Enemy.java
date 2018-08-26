@@ -15,7 +15,7 @@ public class Enemy extends Person{
 				 System.out.println("The" + this.name +" fumbles his attack and misses you.");
 			 }
 			 else{
-				 System.out.println(this.name+"closely misses the you.");
+				 System.out.println(this.name+"closely misses you.");
 			 }
 		}
 		else{
