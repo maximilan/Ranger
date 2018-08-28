@@ -5,7 +5,7 @@ class Ranger{
   
   static Player setup(){
     Room r1 = new Room("A House", "is");
-    r1.set_description("It is night. You suddenly find yourself standing in front of an abondoned villa.\nWindows and doors are boarded up. The only way out is a small path going south.");
+    r1.set_description("It is night. You find yourself standing in front of an abondoned villa.\nWindows and doors are boarded up. The only way out is a small path going south.");
     
     Room r2 = new Room("A Crossroads", "is");
     r2.set_description("You come to a crossroads. A disturbing silence greets you. \nYou seem to be alone.");
