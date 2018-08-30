@@ -1,12 +1,9 @@
 package objects;
 
+
 public class Player extends Person{
   
   int maxhp;
-  // Player(){
-  //  Room r1 = new Room(null);
-   // this.Player(r1);
-  //}
 
   Player(Room room){
     this.hp = 20;
@@ -31,7 +28,7 @@ public class Player extends Person{
     return enemy.isDead();
   }
   
-  void move(String direction){
+  void make(String direction){
     
     Room new_room = this.room.move(direction);
     if (new_room != null) this.room = new_room;
