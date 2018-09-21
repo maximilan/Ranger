@@ -35,7 +35,7 @@ public class Player extends Person {
     return enemy.isDead();
   }
 
-  void factor(String action) {
+  public void factor(String action) {
     System.out.println("\n");
     String command;
     String parameter;
@@ -62,6 +62,7 @@ public class Player extends Person {
       if (!(parameter == null)) {
           this.weapon = w;
           System.out.println("\n\nYou are now wielding a "+this.weapon.name+".\n");
+          this.weapon.describe();
       } 
       }
    

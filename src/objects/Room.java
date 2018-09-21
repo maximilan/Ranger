@@ -41,7 +41,7 @@ public class Room extends GameObject {
     this.description = description;
   }
 
-  void describe() {
+  public void describe() {
     System.out.println("------" + this.name + "------");
     System.out.println(this.description);
     if (!(this.weapon == null)) {

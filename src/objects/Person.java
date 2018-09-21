@@ -4,7 +4,7 @@ public class Person extends GameObject {
 
 	int hp;
 	Weapon weapon;
-	Room room;
+	public Room room;
 
 	boolean isDead() {
 		if (hp <= 0) {

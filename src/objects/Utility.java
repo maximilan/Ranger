@@ -6,7 +6,7 @@ public class Utility {
     return (int) (start + Math.random() * (end - start));
   }
   
-  static Player setup() {
+  public static Player setup() {
     Room r1 = new Room("A House", "is");
     r1.set_description("It is night. You suddenly find yourself standing in front of an abondoned villa.\nWindows and doors are boarded up. The only way out is a small path going south.");
 

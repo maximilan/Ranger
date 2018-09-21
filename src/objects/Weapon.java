@@ -21,6 +21,10 @@ public class Weapon extends GameObject {
   void find(){
     System.out.println("\nYou see a "+this.name+" lying in the ground");
     }
+  
+  void describe(){
+	  System.out.printf("\n"+this.name+"\n"+this.description+"\nDamage: %d\nAccuracy: %d\n", this.damage, this.accuracy);
+  }
 
   int hit(Player p) {
     if (Math.random() > accuracy) {
