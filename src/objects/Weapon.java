@@ -23,8 +23,8 @@ public class Weapon extends GameObject {
 	}
 
 	void describe() {
-		System.out.printf("\n" + this.name + "\n" + this.description
-				+ "\nDamage: %d\nAccuracy: %d\n", this.damage, this.accuracy);
+		System.out.printf(this.name + "\n" + this.description
+				+ "\nDamage: %f\nAccuracy: %f\n\n", this.damage, this.accuracy);
 	}
 
 	int hit(Player p) {

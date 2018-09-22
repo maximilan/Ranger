@@ -53,9 +53,9 @@ public class Room extends GameObject {
 			System.out.printf("%s %s in the %s.", links.get(direction).name,
 					links.get(direction).verb, direction);
 			System.out.print("\n");
-			System.out.println("---------------------");
 
 		} // end of for
+		System.out.println("---------------------");
 
 	}
 
