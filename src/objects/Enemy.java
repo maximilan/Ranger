@@ -7,6 +7,7 @@ public class Enemy extends Person {
 		this.description = description;
 		this.weapon = weapon;
 	}
+	
 
 	Boolean fight(Player player) {
 		int dmg = this.weapon.hit(player);

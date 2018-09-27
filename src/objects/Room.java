@@ -10,22 +10,26 @@ public class Room extends GameObject {
 	ArrayList<String> directions;
 	String verb;
 	Weapon weapon;
+	Enemy enemy;
+	ArrayList<GameObject> items;
 
 	Room(String name, String verb) {
 		this(name, "", verb);
 	}
 
 	Room(String name, String description, String verb) {
-		this(name, description, verb, null);
+		this(name, description, verb, null, null);
 	}
 
-	Room(String name, String description, String verb, Weapon weapon) {
+	Room(String name, String description, String verb, Weapon weapon,
+			Enemy enemy) {
 		this.name = name;
 		this.description = description;
 		this.verb = verb;
 		links = new HashMap<String, Room>();
 		directions = new ArrayList<String>();
 		this.weapon = weapon;
+		this.enemy = enemy;
 	}
 
 	void add_weapon(Weapon w) {
@@ -57,6 +61,29 @@ public class Room extends GameObject {
 		} // end of for
 		System.out.println("---------------------");
 
+	}
+
+	public Boolean describe_item(String item) {
+		this.items = new ArrayList<GameObject>();
+		this.items.add(this);
+		this.items.add(this.weapon);
+		try {
+			this.items.add(this.enemy);
+			this.items.add(this.enemy.weapon);
+		} catch (Exception e) {
+		}
+
+		for (GameObject o : items) {
+			try {
+				if (o.name.equals(item)) {
+					System.out.println("\n" + o.description + "\n");
+					return true;
+				}
+			} catch (Exception e) {
+			}
+		}
+		System.out.println("\nDescription for [" + item + "] not found.\n");
+		return false;
 	}
 
 	Room move(String direction) {

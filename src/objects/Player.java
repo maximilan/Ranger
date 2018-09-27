@@ -4,10 +4,6 @@ public class Player extends Person {
 
 	int maxhp;
 
-	// Player(){
-	// Room r1 = new Room(null);
-	// this.Player(r1);
-	// }
 
 	Weapon weapon;
 
@@ -39,7 +35,7 @@ public class Player extends Person {
 		System.out.println("\n");
 		String command;
 		String parameter;
-		String commands[] = action.split(" ");
+		String commands[] = action.split(" ", 2);
 		command = commands[0];
 
 		try {
@@ -69,6 +65,10 @@ public class Player extends Person {
 						+ this.weapon.name + ".\n");
 				this.weapon.describe();
 			}
+		}
+		
+		else if (command.equals("describe")){
+			this.room.describe_item(parameter);
 		}
 
 	}
