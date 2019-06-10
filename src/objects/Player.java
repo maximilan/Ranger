@@ -3,6 +3,7 @@ package objects;
 public class Player extends Person {
 
 	int maxhp;
+	int xp;
 
 	Weapon weapon;
 
@@ -11,6 +12,8 @@ public class Player extends Person {
 		this.maxhp = 20;
 		this.room = room;
 		this.weapon = null;
+		this.xp = 0;
+		String[] text = new String[10];
 	}
 
 	Boolean fight(Enemy enemy) {
@@ -27,7 +30,7 @@ public class Player extends Person {
 		return enemy.isDead();
 	}
 
-	public void factor(String action) throws InterruptedException {
+	public void factor(String action){
 		System.out.println("\n");
 		String command;
 		String parameter;
@@ -74,13 +77,12 @@ public class Player extends Person {
 
 	}
 
-	void attack(Enemy e) throws InterruptedException{
+	void attack(Enemy e){
 		while (this.hp > 0) {
 			this.fight(e);
-			Thread.sleep(500);
 			e.fight(this);
-			Thread.sleep(500);
-			if (e.hp == 0) {
+			if (e.hp <= 0) {
+				System.out.println("\nYou have succesfully slain the "+e.name+"!");
 				break;
 			} // end of if-else
 		} // end of while

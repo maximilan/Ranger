@@ -25,7 +25,7 @@ public class Weapon extends GameObject {
       case "Copper Knife":
         
         this.damage = 2;
-        this.accuracy = 0.35;
+        this.accuracy = 0.5;
         this.name = "Copper Knife";
         this.description = "Small Knife normally used for cooking";
         break;
