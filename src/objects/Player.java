@@ -4,13 +4,11 @@ public class Player extends Person {
 
 	int maxhp;
 
-
 	Weapon weapon;
 
 	Player(Room room) {
 		this.hp = 20;
 		this.maxhp = 20;
-		this.weapon = new Weapon();
 		this.room = room;
 		this.weapon = null;
 	}
@@ -19,19 +17,17 @@ public class Player extends Person {
 		int dmg = this.weapon.hit(enemy);
 		if (dmg == 0) {
 			if (Math.random() > 0.5) {
-				System.out.println("You fumble your attack and miss the "
-						+ enemy.name + ".");
+				System.out.println("You fumble your attack and miss the " + enemy.name + ".");
 			} else {
 				System.out.println("You closely miss the " + enemy.name + ".");
 			}
 		} else {
-			System.out.printf("You hit the %s,  who loses %d Hp.%n",
-					enemy.name, dmg);
+			System.out.printf("You hit the %s,  who loses %d Hp.%n", enemy.name, dmg);
 		}
 		return enemy.isDead();
 	}
 
-	public void factor(String action) {
+	public void factor(String action) throws InterruptedException {
 		System.out.println("\n");
 		String command;
 		String parameter;
@@ -53,6 +49,9 @@ public class Player extends Person {
 			if (new_room != null)
 				this.room = new_room;
 			this.room.describe();
+			if (this.room.enemy != null) {
+				this.attack(this.room.enemy);
+			}
 		}
 
 		else if (command.equals("take")) {
@@ -61,15 +60,29 @@ public class Player extends Person {
 				System.out.println("Unknown item [" + parameter + "]");
 			} else {
 				this.weapon = w;
-				System.out.println("\n\nYou are now wielding a "
-						+ this.weapon.name + ".\n");
+				System.out.println("\n\nYou are now wielding a " + this.weapon.name + ".\n");
 				this.weapon.describe();
 			}
 		}
-		
-		else if (command.equals("describe")){
+
+		else if (command.equals("describe")) {
+			if (parameter.equals(this.weapon.name)) {
+				this.weapon.describe();
+			}
 			this.room.describe_item(parameter);
 		}
 
+	}
+
+	void attack(Enemy e) throws InterruptedException{
+		while (this.hp > 0) {
+			this.fight(e);
+			Thread.sleep(500);
+			e.fight(this);
+			Thread.sleep(500);
+			if (e.hp == 0) {
+				break;
+			} // end of if-else
+		} // end of while
 	}
 }
